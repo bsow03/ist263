@@ -1,0 +1,46 @@
+body{
+    background-color: #b470db;
+}
+
+h1, h2 {
+   color:#83d5f6;
+}
+
+p {
+    color: #ffc8dd;
+}
+
+h4 {
+    color: white;
+}
+
+nav {
+    font-size: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    background-color: #399dfb;
+    margin-bottom: 30px;
+    margin-left: -10px;
+    margin-top: -10px;
+    margin-right: -5px;
+    border: solid;
+    padding: 15px;
+    
+}
+
+ul {
+    color: white;
+}
+
+nav a {
+    color: #ffc8dd;
+}
+
+nav a:hover {
+    background-color: #7209b7;
+}
+
+table {
+    margin-left: 31.5%;
+    text-align: center;
+}
