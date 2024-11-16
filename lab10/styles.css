@@ -1,0 +1,191 @@
+body{
+    background-color: #b470db;
+}
+
+h1, h2 {
+   color:#83d5f6;
+}
+
+h1 {
+    text-align: center; /* Center the h1 */
+}
+
+p {
+    color: #ffc8dd;
+}
+
+h4 {
+    color: white;
+}
+
+.img1 {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Style for the skills container */
+.skills-container {
+    display: flex;
+    justify-content: space-around;  /* Distributes the items with equal space around them */
+    flex-wrap: wrap;  /* Allows the items to wrap to the next row if necessary */
+    margin-top: 20px;
+    gap: 25px;
+
+}
+
+/* Style for individual skill items */
+.skill-item {
+    text-align: center;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style for the images (icons) */
+.skill-item img {
+    width: 60px;  /* Adjust the icon size */
+    height: fit-content;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.skill-item p {
+    margin: 0;
+}
+
+/* Makes sure the other skills sidebar is placed on the right */
+main {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.other-skills {
+    background-color: #399dfb;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 30px;
+    width: 25%;
+}
+
+aside {
+    width: 25%;  /* Sidebar takes 25% of the page width */
+}
+
+/* Style for the list of other skills */
+.other-skills ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.other-skills li {
+    margin-bottom: 10px;
+}
+
+.skills-container {
+    gap: 20px;
+}
+
+
+nav {
+    font-size: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    background-color: #399dfb;
+    margin-bottom: 30px;
+    margin-left: -10px;
+    margin-top: -10px;
+    margin-right: -5px;
+    border: solid;
+    padding: 15px;
+    
+}
+
+ul {
+    color: white;
+}
+
+nav a {
+    color: #ffc8dd;
+}
+
+nav a:hover {
+    background-color: #7209b7;
+}
+
+table {
+    margin-left: 31.5%;
+    text-align: center;
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;  /* Add some space between elements */
+}
+
+.contact-form,
+.contact-map {
+    flex: 1 1 45%;  /* Allow form and map to take up equal space, but adjust for small screens */
+    min-width: 300px;  /* Prevent them from shrinking too small */
+}
+
+.contact-form {
+    padding: 20px;
+    padding-right: 50px;
+}
+
+.contact-map {
+    padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    nav a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    nav span {
+        display: none;  /* Hides the pipe character */
+    }
+
+    /* Stack the form and map on smaller screens */
+    .contact-container {
+        flex-direction: column;
+        align-items: center;  /* Optional: to center the content */
+    }
+
+    .contact-form,
+    .contact-map {
+        flex: 1 1 100%;
+        width: 100%;  /* Make sure both the form and map take up the full width */
+    }
+}
+
+.contact-map iframe {
+    max-width: 100%;
+    height: 400px;  /* Optional: Set a height for the iframe */
+    width: 100%;    /* Ensure it takes up the full width of its container */
+}
+
+
+
+footer .footer-content h4 {
+    margin: 0;
+    padding: 0;
+}
+
+footer .footer-content .left {
+    float: left;
+}
+
+footer .footer-content .right {
+    float: right;
+}

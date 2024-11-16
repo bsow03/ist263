@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 11</title>
+    <link rel="stylesheet" href="../styles/animate2.css">
+    <script>
+        function WinnerMessage () {
+            document.getElementById("messages").innerHTML = 'Good job - you won! ';
+        }
+        function TryAgain () {
+            document.getElementById("messages").innerHTML = 'Wrong shell - try again! ';
+        }
+        function ShuffleShells() {
+            document.getElementById("first").style.order = Math.floor((Math.random() * 3) + 2);
+        }
+    </script>
+    <style>
+        .container {
+            display: flex;
+        }
+        #first {order: 1;}
+        #second {order: 2;}
+        #third {order: 3;}
+    </style>
+</head>
+<body onload="ShuffleShells();">
+    <h1>Choose a Walnut</h1>
+    <div class="container">
+        <img src="../images/walnut.png" alt="first walnut" id="first" onclick="WinnerMessage();">
+        <img src="../images/walnut.png" alt="second walnut" id="second" onclick="TryAgain();">
+        <img src="../images/walnut.png" alt="third walnut" id="third" onclick="TryAgain();">
+    </div>
+    <div id="messages"></div>
+</body>
+</html>
