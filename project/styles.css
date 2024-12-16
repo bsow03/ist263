@@ -433,11 +433,11 @@ p {
 
 .github-link a {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 4vh;
     color: #b74b4b;
     text-decoration: none;
     border: 1px solid #b74b4b;
-    padding: 10px 20px;
+    padding: 1rem 2rem;
     border-radius: 10px;
     transition: background-color 0.3s, color 0.3s;
     font-size: x-large;
@@ -462,7 +462,7 @@ p {
 
 /* Section styling */
 .experiences {
-    padding: 2rem;
+    padding: 8rem;
     background-color: #000; /* black background */
     color: #fff; /* white text */
     text-align: center;
@@ -497,7 +497,7 @@ p {
     border: 2px solid #e74c3c;
     padding: 2.5rem;
     border-radius: 8px;
-    width: 225px;
+    width: 20vw;
 }
 
 .description-box p {
