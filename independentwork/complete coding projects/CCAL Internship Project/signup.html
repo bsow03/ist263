@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="posts.css" rel="stylesheet">
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+    import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+    const firebaseConfig = {
+
+      apiKey: "AIzaSyAEZI3iAy8dAOeQzW-UmZ2Ax5zdIELvFFk",
+
+      authDomain: "ccal-policy.firebaseapp.com",
+
+      projectId: "ccal-policy",
+
+      storageBucket: "ccal-policy.appspot.com",
+
+      messagingSenderId: "922662784586",
+
+      appId: "1:922662784586:web:780f264aa931d792f760b3",
+
+      measurementId: "G-36WZW1PBNG"
+
+    };
+
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Generate and store key pair
+    async function generateAndStoreKeyPair(user) {
+      const keyPair = await window.crypto.subtle.generateKey(
+        {
+          name: "RSASSA-PKCS1-v1_5",
+          modulusLength: 2048,
+          publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
+          hash: { name: "SHA-256" }
+        },
+        true,
+        ["sign", "verify"]
+      );
+
+      // Export the public key to JWK format
+      const publicKeyJWK = await window.crypto.subtle.exportKey("jwk", keyPair.publicKey);
+
+      // Store the public key in Firestore under the user's profile
+      await setDoc(doc(db, "users", user.uid), {
+        email: user.email,
+        publicKey: publicKeyJWK
+      });
+
+    
+      const privateKeyJWK = await window.crypto.subtle.exportKey("jwk", keyPair.privateKey);
+      localStorage.setItem("privateKey", JSON.stringify(privateKeyJWK)); 
+    }
+
+    // Sign-up function
+    async function signUpUser(event) {
+      event.preventDefault(); // Prevent form submission
+
+      const email = document.getElementById("emailInput").value;
+      const password = document.getElementById("passwordInput").value;
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        // Send email verification
+        await sendEmailVerification(user);
+        console.log("User signed up: ", user);
+
+        // Generate and store key pair
+        await generateAndStoreKeyPair(user);
+
+        alert("Sign-up successful! Please verify your email.");
+        window.location.href = "signin.html"; // Redirect to sign-in page
+      } catch (error) {
+        console.error("Error signing up: ", error.message);
+        alert("Error signing up: " + error.message);
+      }
+    }
+
+    window.signUpUser = signUpUser;
+  </script>
+</head>
+
+<body>
+  <div class="sign-up-container">
+    <h1>Sign Up</h1>
+    <form onsubmit="signUpUser(event)">
+      <label for="emailInput">Email:</label>
+      <input type="email" id="emailInput" placeholder="Enter your email" required>
+      <label for="passwordInput">Password:</label>
+      <input type="password" id="passwordInput" placeholder="Enter your password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="signin.html">Sign In</a></p>
+  </div>
+</body>
+
+</html>

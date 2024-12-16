@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Nike Survey Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <h1 id="title">Nike Survey Form</h1>
+    <p id="description">Thank you for taking the time to help us improve our platform. Submit a survey for a chance at winning 10% off on your next visit at the Nike store.</p>
+    <form id="survey-form" method="post" action='https://register-demo.freecodecamp.org'>
+      <fieldset>
+        <legend>Basic Information (required)</legend>
+        <label for="name" id="name-label">Enter your Name: <input id="name" name="name-label" type="text" placeholder="First Name and Last Name" class="boldtext" required /></label>
+        <label for="email" id="email-label">Enter your Email: <input id="email" name="email-label" type="email" placeholder="example@email.com" class="boldtext" required /></label>
+        <label for="number" id="number-label">Enter your Age: <input id="number" name="number-label" type="number" placeholder="Age" min="13" max="125" class="boldtext"/></label>
+      </fieldset>
+      <fieldset>
+        <legend>Gender</legend>
+        <label class="boldtext"> What is your gender?</label>
+        <label for="gender-male"><input id="gender-male" name="gender-label" type="radio" class="inline" value="Male" />Male</label>
+        <label for="gender-female"><input id="gender-female" name="gender-label" type="radio" class="inline" value="Female" />Female</label>
+        <label for="gender-other"><input id="gender-other" name="gender-label" type="radio" class="inline" value="Other"/>Other</label>
+        <label> If you selected other, what is your gender identity?
+          <select id="dropdown" name="dropdown">
+            <option value="">(select one)</option>
+            <option value="1">Transgender</option>
+            <option value="2">Gender Neutral</option>
+            <option value="3">Non-Binary</option>
+            <option value="4">Agender</option>
+            <option value="5">Pangender</option>
+            <option value="6">Genderqueer</option>
+            <option value="7">Other Gender Not Listed</option>
+          </select>
+        </label>
+      </fieldset>
+      <fieldset>
+        <legend>Survey Questions</legend>
+        <label class="boldtext"> What is your overall opinion of Nike?</label>
+        <label for="question1"><input id="question1" name="opinion-question" type="radio" class="inline" value="Very Good"/>Very Good</label>
+        <label for="question1"><input id="question1" name="opinion-question" type="radio" class="inline" value="Good"/>Good</label>
+        <label for="question1"><input id="question1" name="opinion-question" type="radio" class="inline" value="Neutral"/>Neutral</label>
+        <label for="question1"><input id="question1" name="opinion-question" type="radio" class="inline" value="Bad"/>Bad</label>
+        <label for="question1"><input id="question1" name="opinion-question" type="radio" class="inline" value="Very Bad"/>Very Bad</label>
+        <label class="boldtext"> In the past 30 days, which of these Nike products have you used? (Select one or more)</label>
+        <label for="NikeWebsite"><input id="NikeWebsite" name="NikeWebsite" type="checkbox" class="inline" value="Nike.com"> Nike.com</label>
+        <label for="NikeApp"><input id="NikeApp" type="checkbox" name="NikeApp" class="inline" value="Nike App"> Nike App</label>
+        <label for="SNKRS"><input id="SNKRS" type="checkbox" name="SNKRS" class="inline" value="SNKRS"> SNKRS</label>
+        <label for="NikeTC"><input id="NikeTC" type="checkbox" name="NikeTC" class="inline" value="Nike Training Club"> Nike Training Club</label>
+        <label for="textarea" class="boldtext"> If you have any suggestions to improve our apps, please feel free to let us know here: 
+          <textarea rows="3" cols="30" placeholder="Let us know your thoughts here!"></textarea></label>
+        <label></label>
+      </fieldset>
+
+      <input id="submit" type="submit" value="submit" />
+
+    </form>
+  </body>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Signing and Verification</title>
+</head>
+<body>
+
+<h2>Sign a Post</h2>
+<textarea id="postContent" rows="4" cols="50">This is a post content...</textarea><br>
+<button onclick="signPost()">Sign Post</button>
+
+<h2>Verify a Post</h2>
+<textarea id="verifyContent" rows="4" cols="50">This is a post content...</textarea><br>
+<button onclick="verifyPost()">Verify Post</button>
+
+<script>
+    let keyPair;
+    let signature;
+
+    async function generateKeyPair() {
+        keyPair = await window.crypto.subtle.generateKey(
+            {
+                name: "RSASSA-PKCS1-v1_5",
+                modulusLength: 2048,
+                publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
+                hash: { name: "SHA-256" }
+            },
+            true,
+            ["sign", "verify"]
+        );
+        console.log("Key pair generated.");
+    }
+
+    async function signPost() {
+        const postContent = document.getElementById("postContent").value;
+        const encoder = new TextEncoder();
+        const data = encoder.encode(postContent);
+
+        signature = await window.crypto.subtle.sign(
+            { name: "RSASSA-PKCS1-v1_5" },
+            keyPair.privateKey,
+            data
+        );
+
+        console.log("Signature:", new Uint8Array(signature));
+    }
+
+    async function verifyPost() {
+        const verifyContent = document.getElementById("verifyContent").value;
+        const encoder = new TextEncoder();
+        const data = encoder.encode(verifyContent);
+
+        const isValid = await window.crypto.subtle.verify(
+            { name: "RSASSA-PKCS1-v1_5" },
+            keyPair.publicKey,
+            signature,
+            data
+        );
+
+        console.log("Is the signature valid? ", isValid);
+    }
+
+    // Generate the key pair when the page loads
+    generateKeyPair();
+</script>
+
+</body>
+</html>

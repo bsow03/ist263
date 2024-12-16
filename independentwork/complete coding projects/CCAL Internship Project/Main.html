@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Posts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="posts.css" rel="stylesheet">
+</head>
+
+<body>
+  <button id="createButton" onclick="toggleCreateModal()">Create Policy Proposal</button>
+
+  <div id="overlay" onclick="toggleCreateModal()"></div>
+
+  <div id="createModal">
+    <h1>Create Policy Proposal</h1>
+    <label for="createTitle">Title:</label>
+    <input type="text" id="titleInput" name="titleInput" placeholder="Title">
+    <label for="descInput">Description:</label>
+    <input type="text" id="descInput" name="descInput" placeholder="Share a thought...">
+    <button onclick="submitPost()">Submit</button>
+  </div>
+
+  <input type="text" id="searchInput" placeholder="Search posts..." oninput="displayPosts()">
+
+  <div id="postsContainer"></div>
+
+  <script type="module">
+    // Firebase setup
+    import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+    import {getFirestore, collection, addDoc, getDocs, doc, updateDoc, getDoc, arrayUnion, increment} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+    import {getAuth, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+    const firebaseConfig = {
+
+      apiKey: "AIzaSyAEZI3iAy8dAOeQzW-UmZ2Ax5zdIELvFFk",
+
+      authDomain: "ccal-policy.firebaseapp.com",
+
+      projectId: "ccal-policy",
+
+      storageBucket: "ccal-policy.appspot.com",
+
+      messagingSenderId: "922662784586",
+
+      appId: "1:922662784586:web:780f264aa931d792f760b3",
+
+      measurementId: "G-36WZW1PBNG"
+
+    };
+
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
