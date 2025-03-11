@@ -56,7 +56,6 @@ header { /* header and navigation */
 nav a{ /* words in navi*/
     font-size: 1.8rem;
     color: rgb(255, 255, 255);
-    margin-left: 4rem;
     font-weight: 500;
     transition: 0.3s ease;
     border-bottom: 3px solid transparent;
@@ -71,19 +70,32 @@ nav a:hover{
     color: #b74b4b;
 }
 
+nav{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    gap: 1.8rem;
+}
+
+@media all and (max-width: 800px) {
+    nav {
+        justify-content: flex-end;
+    }
+}
+
+@media all and (max-width: 500px) {
+    nav{
+        flex-direction: column;
+    }
+}
+
 @media(max-width:995px){
     nav{
-        position: absolute;
-        display: none;
-        top: 100%;
-        right: 0;
-        width: 40%;
-        border-left: 3px solid #b74b4b;
-        border-bottom: 3px solid #b74b4b;
-        border-bottom-left-radius: 2rem;
-        padding: 1rem solid;
-        background-color: #161616;
-        border-top: 0.1rem solid rgba(0,0,0,0,1);
+        position: relative;
+        display: flex;
+        gap: 1.8rem;
+        font-size: 1rem;
+        
     }
 
 nav.active{
@@ -158,7 +170,7 @@ p {
     font-size: 1.9rem;
     font-family: Verdana;
     text-align: left;
-    margin-bottom: 2rem;
+    margin-bottom: 1.7rem;
     color: rgb(245, 245, 245);
 }
 
@@ -241,7 +253,8 @@ p {
 
 .home-img img{
     position: relative;
-    width: 32vw;
+    width: 45vw;
+    border: 2.5px solid #b74b4b;
     border-radius: 10%;
     box-shadow: 0 0 25px solid #b74b4b;
     cursor: pointer;
@@ -253,17 +266,22 @@ p {
     font-weight: 500;
 }
 
+.social-icons{
+    display: inline-flex;
+    gap: 7.2rem;
+}
+
 .social-icons a{
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 15vh;
-    height: 14vh;
+    width: 9rem;
+    height: 9rem;
     background-color: transparent;
     border: 0.2rem solid #b74b4b;
     font-size: 2rem;
     border-radius: 50%;
-    margin: 2rem 1.2vw 3rem;
+    margin: 0.5rem 0.1rem 2.2rem 0.1rem;
     transition: 0.3s ease-in-out;
     color: #b74b4b
 }
@@ -283,7 +301,9 @@ p {
 
 .btn{
     display: inline-block;
-    padding: 1rem 28.8rem;
+    white-space: nowrap;
+    padding: 1.8rem 25rem 1.8rem 25rem;
+    margin: 0.2rem 0.2rem;
     background-color: black;
     border-radius: 4rem;
     font-size: 1.6rem;
@@ -476,8 +496,8 @@ p {
 /* Header styling */
 .experiences h2 {
     text-align: center;
-    font-size: 2rem;
-    font-weight: 300;
+    font-size: 6rem;
+    font-weight: 400;
     margin-bottom: 1rem;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -500,15 +520,31 @@ p {
 /* Skill Box */
 .skills-box, .description-box {
     border: 2px solid #e74c3c;
-    padding: 2.5rem;
+    padding: 1.5rem;
     border-radius: 8px;
     width: 20vw;
 }
 
+.skills-box h3 {
+    font-size: 2.4rem;;
+    margin-bottom: 1.5rem;
+    font-family: sans-serif;
+    font-weight: 600;
+    color: #b74b4b;
+  }
+  
+  .description-box h3 {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+    font-family: sans-serif;
+    font-weight: 600;
+    color: #b74b4b;
+  }
+
 .description-box p {
     font-size: 1.5rem;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: right;
+    text-align: center;
     margin-bottom: 0.5rem;
 }
 
